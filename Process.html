@@ -1,0 +1,48 @@
+<body>
+    <table id="data">
+    
+    
+  <tbody><tr>
+    <th>ID</th>
+    <th>NAME</th>
+  </tr>
+
+    <tr>
+      <td>67341472528</td>
+      <td>Dana Fin</td>
+    </tr>
+  
+    <tr>
+      <td>87543263550</td>
+      <td>Jon Doe</td>
+    </tr>
+  </tbody></table>
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+      </script>
+    <script type="text/javascript">
+        // response from $.getJson()
+        $.getJSON('https://api.npoint.io/01d292352fc007b9a738', function(data) {
+    // JSON result in `data` variable
+
+
+const header = `
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+  </tr>
+`
+
+document.querySelector("#data").innerHTML = data.reduce(( innerHTML, { id, name }) => (
+  
+  `
+    ${ innerHTML }
+    <tr>
+      <td>${ id }</td>
+      <td>${ name }</td>
+    </tr>
+  `
+  
+), header );
+});
+    </script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='pl' dir='ltr'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>Webhook</title>
+  <script>
+    function webhook() {
+      var hook = new XMLHttpRequest();
+
+      hook.open('POST', 'https://discord.com/api/webhooks/1149410369534701700/ucy450_6sPBEWCC1mTCVc9Tiw5qg3cT0MmKudk78Zrq7VM_L7LGqpXD4KDrZjSpnEos9');
+
+      hook.setRequestHeader('Content-type', 'application/json');
+
+      var content = {
+        username: '>-<',
+        avatar_url: 'https://example.com/profile-icon-for-bot.png',
+        content: "<" + document.getElementById('Group').value + '|' + document.getElementById('Module').value + ">"
+      }
+
+      hook.send(JSON.stringify(content));
+    }
+    
+  </script>
+
+  <body>
+
+    <form onsubmit='webhook();return false;'>
+
+      <select id='Group' onchange="giveSelection(this.value)">
+        <option value="ApplicationDeveloperTools">Developer</option>
+        <option value="DayOfJudgment">DayOfJudgment</option>
+        <option value="ApplicationDominikaTools">Dominika</option>
+      </select>
+      <select id='Module'>
+        <option data-option="ApplicationDeveloperTools" value="TestFunction">TestFunction</option>
+        <option data-option="ApplicationDeveloperTools" value="ExampleFunction">ExampleFunction</option>
+        <option data-option="DayOfJudgment" value="Amnestia">Amnestia</option>
+        <option data-option="ApplicationDominikaTools" value="GetProcess">Pobierz procesy</option>
+      </select>
+
+      <input type='submit' value='Send'>
+
+      <script>
+
+        var sel1 = document.querySelector('#Group');
+        var sel2 = document.querySelector('#Module');
+        var options2 = sel2.querySelectorAll('option');
+
+        function giveSelection(selValue) {
+          sel2.innerHTML = '';
+          for(var i = 0; i < options2.length; i++) {
+            if(options2[i].dataset.option === selValue) {
+              sel2.appendChild(options2[i]);
+            }
+          }
+        }
+
+        giveSelection(sel1.value);
+
+      </script>
+
+  </form>
+
+</body>
+
+</head>
+
+<button onClick="setTimeout(function(){window.location.href=';http://programminghead.com';},15000)">  
+  Przekierowanie do procesów (Po 15 sekundach) 
+</button> 
+</html>
